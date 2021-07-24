@@ -1,9 +1,13 @@
+from datetime import datetime
+import json
 import serial
 import pyttsx3 as talk
 from playsound import playsound as ps
 import speech_recognition as sr
 
-ser = serial.Serial('/dev/cu.usbmodem143301', baudrate=9600, timeout=1)
+record = {}
+
+ser = serial.Serial("/dev/cu.usbmodem141301", baudrate=9600, timeout=1)
 duck = talk.init()
 
 sample_rate = 48000
@@ -27,12 +31,13 @@ def duck_talk(text):
 
 def duck_debugging():
     speech = ''
+    case = {}
 
     with sr.Microphone(device_index=mic_id, sample_rate=sample_rate,
                        chunk_size=chunk_size) as source:
 
         r.adjust_for_ambient_noise(source, duration=5)
-        duck_talk("Don't worry, Agent Duck is here to safe the day. Please run through your code with Agent Duck")
+        duck_talk("Don't worry, Agent Buck is here to safe the day. Please run through your code with Agent Buck")
 
         try:
             while 1:
@@ -51,36 +56,58 @@ def duck_debugging():
                     print('continue')
                     continue
                 else:
-                    duck_talk("Good job! Agent Duck is glad.")
+                    duck_talk("Good job! Agent Buck is glad. Log your details before moving on.")
+                    desc = input("Give a short description: \n")
+                    lang = input("Programming Language used: \n")
+                    record[datetime.now().strftime('%Y-%m-%d %H:%M:%S')] = {
+                        "Short Description": desc,
+                        "Session Logs:": speech,
+                        "Language used": lang
+                    }
                     print('break')
                     break
 
         # error occurs when google could not understand what was said
 
         except sr.UnknownValueError:
+            duck_talk("I could not understand. Call again if you need help!")
             print("Google Speech Recognition could not understand audio")
 
         except sr.RequestError as e:
             print("Could not request results from GoogleSpeechRecognitionservice;{0}".format(e))
 
 
-duck.say('this works o m g')
-duck.runAndWait()
+def save_json(temp):
+    dict2 = json.load(file)
+    dict2.update(temp)
+    print(dict2)
 
-# def duck_programming():
+    newfile = open('codeRecords/records.json', 'w')
+    json.dump(dict2, newfile, sort_keys=True, indent=4)
 
+
+duck_talk("Starting session.")
+
+file = open('codeRecords/records.json', 'r')
 
 while 1:
 
-    data = (ser.readline()).decode('utf-8')
-    print(data)
+    try:
+        data = (ser.readline()).decode('utf-8')
+        print(data)
 
-    if 'blue on' in data:
-        ps('audio/BeeperEmergencyCall.mp3')
-        duck_talk('blue light on, agent duck thinks you need help')
-        duck_debugging()
+        if 'blue on' in data:
+            ps('audio/BeeperEmergencyCall.mp3')
+            duck_talk('blue light on, agent buck thinks you need help')
+            duck_debugging()
 
-    elif 'yellow on' in data:
-        ps('audio/PhoneRinging.mp3')
-        duck_talk('yellow light on, transferring you to our agent')
-        duck_debugging()
+        elif 'yellow on' in data:
+            ps('audio/PhoneRinging.mp3')
+            duck_talk('yellow light on, transferring you to our agent')
+            duck_debugging()
+
+    except KeyboardInterrupt:
+        duck_talk("Thank you for using Agent Buck Services. Have a pleasant day.")
+        save_json(record)
+
+        exit()
