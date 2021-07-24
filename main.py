@@ -4,10 +4,13 @@ import serial
 import pyttsx3 as talk
 from playsound import playsound as ps
 import speech_recognition as sr
+from googlesearch import search
+import spacy
+import webbrowser
 
 record = {}
 
-ser = serial.Serial("/dev/cu.usbmodem141301", baudrate=9600, timeout=1)
+ser = serial.Serial("/dev/cu.usbmodem144301", baudrate=9600, timeout=1)
 duck = talk.init()
 
 sample_rate = 48000
@@ -23,6 +26,30 @@ for i in range(0, len(mic_list)):
     if name == 'External Microphone':
         mic_id = i
 
+nlp = spacy.load("en_core_web_sm")
+all_stopwords = nlp.Defaults.stop_words
+
+word_list = ['I', 'this', 'that', 'part', 'the', 'try', 'write', 'suppose', 'work', 'this part', 'that part']
+
+for word in word_list:
+    all_stopwords.add(word)
+
+
+def searcher(text):
+    text = text.lower()
+    doc = nlp(text)
+
+    nouns = [chunk.text for chunk in doc.noun_chunks if chunk.text not in all_stopwords]
+    verbs = [token.lemma_ for token in doc if token.pos_ == "VERB" if token.lemma_ not in all_stopwords]
+
+    #remove duplicates
+    nouns = list(dict.fromkeys(nouns))
+    verbs = list(dict.fromkeys(verbs))
+
+    allWords = (str(nouns + verbs)).replace('[', '').replace(']', '').replace("'", '').replace(',', '')
+
+    return search(allWords, num_results=3)
+
 
 def duck_talk(text):
     duck.say(text)
@@ -31,7 +58,6 @@ def duck_talk(text):
 
 def duck_debugging():
     speech = ''
-    case = {}
 
     with sr.Microphone(device_index=mic_id, sample_rate=sample_rate,
                        chunk_size=chunk_size) as source:
@@ -48,13 +74,32 @@ def duck_debugging():
                 print(text)
                 speech = speech + text
 
-                duck_talk("Have you cracked the code? Reply: chocolate")
+                duck_talk("Have you cracked the code? Reply: chocolate to continue or coffee to get help")
                 audio = r.listen(source)
                 reply = r.recognize_google(audio)
                 print(reply)
                 if 'chocolate' in reply:
                     print('continue')
                     continue
+                elif 'coffee' in reply:
+                    duck_talk("Don't worry! Agent Duck will redirect you external help, straight from your web "
+                              "browser. "
+                              "Before we proceed, log your details.")
+                    desc = input("Give a short description: \n")
+                    lang = input("Programming Language used: \n")
+
+                    search_list = searcher(speech)
+
+                    record[datetime.now().strftime('%Y-%m-%d %H:%M:%S')] = {
+                        "Short Description": desc,
+                        "Session Logs:": speech,
+                        "Language used": lang,
+                        "Useful references": search_list
+                    }
+
+                    webbrowser.open(search_list[0], new=2)
+                    break
+
                 else:
                     duck_talk("Good job! Agent Buck is glad. Log your details before moving on.")
                     desc = input("Give a short description: \n")
@@ -62,7 +107,8 @@ def duck_debugging():
                     record[datetime.now().strftime('%Y-%m-%d %H:%M:%S')] = {
                         "Short Description": desc,
                         "Session Logs:": speech,
-                        "Language used": lang
+                        "Language used": lang,
+                        "Useful references": searcher(speech)
                     }
                     print('break')
                     break
