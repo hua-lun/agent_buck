@@ -52,11 +52,10 @@
   width: 50%;
 }
 
-
-canvas {
-	position:absolute;
-	right:0;
-	top:0;
+.bottomLeft {
+  display: block;
+  width: 100%;
+  height: 30%;
 }
 
 pre {
@@ -65,14 +64,21 @@ pre {
   font-size: 18px;
 }
 
+.meme {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+
 .bigh1 {
   margin: 4px;
   font-family: "Lucida Console", "Courier New", monospace;
   font-size: 50px;
 }
 
-span {
-  margin: 4px;
+.bigh12 {
+  margin: 40px;
   font-family: "Lucida Console", "Courier New", monospace;
-  font-size: 18px;
+  font-size: 25px;
+  word-wrap: break-word;
 }
