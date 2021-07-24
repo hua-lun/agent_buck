@@ -10,6 +10,10 @@
     <div id="scoreEle"></div>
   </div>
   <img src="web/bucky.png" alt="Agent Bucky" class="center" id="bucky">
+  <div class="bottomLeft">
+    <div class="bigh12" id="title">Fresh memes</div>
+    <div id="picture"></div>
+  </div>
 </div>
 
 
@@ -17,7 +21,17 @@
 </script>
 <script>
 
-  var score = 0;
+  function getClicks() {
+    var clicks = 0;
+    $.getJSON('web/stat.json', function (data) {
+      clicks = data['clicks'];
+      console.log(clicks);
+    });
+
+    return clicks;
+  }
+
+  var score = getClicks();
 
   $.getJSON('codeRecords/records.json', function(data) {
     // JSON result in `data` variable
@@ -28,9 +42,25 @@
 
   $('#bucky').click(function () {
     score++;
-    $('#scoreEle').html('<h1 class="bigh1">' + score + '</h1>')
+    $('#scoreEle').html('<h1 class="bigh1">' + score + '</h1>');
 
+    url = 'https://meme-api.herokuapp.com/gimme/ProgrammerHumor/1';
+
+    $.getJSON(url, function (data) {
+
+      console.log(data['memes'][0]['title']);
+
+      var title = data['memes'][0]['title'];
+      var imgurl = data['memes'][0]['url'];
+
+
+      $('#title').html('<h1>' + title + '</h1>');
+      //$('#picture').html('<img class="meme" src=' + imgurl + '/ alt="no">')
   })
+
+  });
+
+
 
 
 
