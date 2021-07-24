@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="web/design.css">
+
+<div class="split left">
+    <pre class="scroll" id="haha"></pre>
+</div>
+
+<div class="split right">
+  <div>
+    <h1 class="bigh1">Clicks: </h1>
+    <div id="scoreEle"></div>
+  </div>
+  <img src="web/bucky.png" alt="Agent Bucky" class="center" id="bucky">
+</div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+<script>
+
+  var score = 0;
+
+  $.getJSON('codeRecords/records.json', function(data) {
+    // JSON result in `data` variable
+    console.log(data);
+    //document.getElementById('haha').innerHTML = JSON.stringify(data, undefined, 2);
+    $('#haha').html(JSON.stringify(data, undefined, 2));
+  });
+
+  $('#bucky').click(function () {
+    score++;
+    $('#scoreEle').html('<h1 class="bigh1">' + score + '</h1>')
+
+  })
+
+
+
+</script>
+
