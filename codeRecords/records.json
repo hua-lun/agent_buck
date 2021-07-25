@@ -1,84 +1,45 @@
 {
-    "2021-06-24 12:09:36": {
-        "Language used": "c",
-        "Session Logs:": "apple pear strawberry",
-        "Short Description": "things i like"
-    },
-    "2021-07-24 12:09:36": {
-        "Language used": "c",
-        "Session Logs:": "apple pear strawberry",
-        "Short Description": "things i like"
-    },
-    "2021-07-24 12:38:16": {
+    "2021-07-25 13:51:39": {
         "Language used": "java",
-        "Session Logs:": "hello my name's T-Bone",
-        "Short Description": "sing song"
-    },
-    "2021-07-24 13:09:36": {
-        "Language used": "c",
-        "Session Logs:": "apple pear strawberry",
-        "Short Description": "things i like"
-    },
-    "2021-07-24 15:04:31": {
-        "Language used": "d",
-        "Session Logs:": "Pokemon FireRed and LeafGreen",
-        "Short Description": "d",
+        "Session Logs:": "like to know how to use an arraylist in Java please help me a array list in Java",
+        "Short Description": "arraylist syntax",
         "Useful references": [
-            "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_FireRed_and_LeafGreen_Versions",
-            "https://en.wikipedia.org/wiki/Pok%C3%A9mon_FireRed_and_LeafGreen",
-            "https://www.serebii.net/fireredleafgreen/",
-            "https://www.pokemon.com/us/pokemon-video-games/pokemon-firered-version-and-pokemon-leafgreen-version/",
-            "/search?q=pokemon+firered+leafgreen&num=4&hl=en&tbm=isch&source=iu&ictx=1&fir=o9g-CqNcN4QICM%252CRViyWd-rMl4b9M%252C%252Fm%252F027qbs&vet=1&usg=AI4_-kSgiifntWNl5D6hWIRA14i4uESFXg&sa=X&ved=2ahUKEwjAiIyNkvvxAhUISDABHfjCC9oQ_B16BAg3EAE#imgrc=o9g-CqNcN4QICM"
+            "https://beginnersbook.com/2013/12/java-arraylist/",
+            "https://stackoverflow.com/questions/27338358/roll-a-collection-of-die-in-array-and-arraylist-java",
+            "https://study.com/academy/lesson/java-arraylist-add-method-code-examples.html",
+            "https://www.geeksforgeeks.org/custom-arraylist-java/"
         ]
     },
-    "2021-07-24 15:05:47": {
-        "Language used": "c",
-        "Session Logs:": "break coffee taste good cappuccino coffee coffee coffee coffee",
-        "Short Description": "c",
+    "2021-07-25 15:40:59": {
+        "Language used": "python",
+        "Session Logs:": "why is my Fizzbuzz code not working? If it is divisible by 3, print fizz. If 5, print buzz. Else, print the number. I used a for loop. Integer i equals to 1. Run when i is less than given input. Increment, oh i see. I decrement it.Changing minus to plus should work.",
+        "Short Description": "fizzbuzz division",
         "Useful references": [
-            "https://www.pinterest.com/hajoknoll/nothing-beats-the-taste-of-good-coffee/",
-            "https://www.pinterest.com/pin/234257618095744188/",
-            "https://www.tasteofhome.com/article/types-of-coffee/"
+            "https://wiki.c2.com/?FizzBuzzTest",
+            "https://www.tomdalling.com/blog/software-design/fizzbuzz-in-too-much-detail/",
+            "https://en.wikipedia.org/wiki/Fizz_buzz"
         ]
     },
-    "2021-07-24 15:06:22": {
-        "Language used": "c",
-        "Session Logs:": "break coffee taste good cappuccino coffee coffee coffee coffeeDubai",
-        "Short Description": "c",
+    "2021-07-25 16:10:15": {
+        "Language used": "python",
+        "Session Logs:": "I want to replace characters in a string I want to use python",
+        "Short Description": "str replace",
         "Useful references": [
-            "https://bachacoffee.com/",
-            "http://freakcoffee.com/testimonials",
-            "https://www.coffeebean.com/blog/our-coffee/cappuccino-vs-latte"
+            "https://stackoverflow.com/questions/12723751/replacing-instances-of-a-character-in-a-string",
+            "https://www.kite.com/python/answers/how-to-replace-characters-in-a-string-in-python",
+            "https://careerkarma.com/blog/python-remove-character-from-string/",
+            "https://www.geeksforgeeks.org/python-string-replace/"
         ]
     },
-    "2021-01-24 15:06:22": {
-        "Language used": "c",
-        "Session Logs:": "break coffee taste good cappuccino coffee coffee coffee coffeeDubai",
-        "Short Description": "c",
+    "2021-07-25 16:21:59": {
+        "Language used": "python",
+        "Session Logs:": "I want to use a dictionary how to sort",
+        "Short Description": "dictionary",
         "Useful references": [
-            "https://bachacoffee.com/",
-            "http://freakcoffee.com/testimonials",
-            "https://www.coffeebean.com/blog/our-coffee/cappuccino-vs-latte"
-        ]
-    },
-    "2021-03-24 15:06:22": {
-        "Language used": "c",
-        "Session Logs:": "break coffee taste good cappuccino coffee coffee coffee coffeeDubai",
-        "Short Description": "c",
-        "Useful references": [
-            "https://bachacoffee.com/",
-            "http://freakcoffee.com/testimonials",
-            "https://www.coffeebean.com/blog/our-coffee/cappuccino-vs-latte"
-        ]
-    },
-    "2021-05-24 15:06:22": {
-        "Language used": "c",
-        "Session Logs:": "break coffee taste good cappuccino coffee coffee coffee coffeeDubai",
-        "Short Description": "c",
-        "Useful references": [
-            "https://bachacoffee.com/",
-            "http://freakcoffee.com/testimonials",
-            "https://www.coffeebean.com/blog/our-coffee/cappuccino-vs-latte"
+            "https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value",
+            "https://towardsdatascience.com/sorting-a-dictionary-in-python-4280451e1637",
+            "https://towardsdatascience.com/two-simple-method-to-sort-a-python-dictionary-a7907c266dba",
+            "https://blog.finxter.com/how-to-sort-a-dictionary-by-value-in-python/"
         ]
     }
 }
