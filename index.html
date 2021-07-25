@@ -12,7 +12,7 @@
   <img src="web/bucky.png" alt="Agent Bucky" class="center" id="bucky">
   <div class="bottomLeft">
     <div class="bigh12" id="title">Fresh memes</div>
-    <div id="picture"></div>
+    <div class="bigh12" id="author"></div>
   </div>
 </div>
 
@@ -51,10 +51,11 @@
       console.log(data['memes'][0]['title']);
 
       var title = data['memes'][0]['title'];
-      var imgurl = data['memes'][0]['url'];
+      var author = data['memes'][0]['author'];
 
 
       $('#title').html('<h1>' + title + '</h1>');
+      $('#author').html('<h2>' + "Author:" + author + '<br>' + "Credits: r/ProgrammerHumor" + '</h2>')
       //$('#picture').html('<img class="meme" src=' + imgurl + '/ alt="no">')
   })
 
