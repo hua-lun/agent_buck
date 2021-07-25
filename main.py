@@ -10,7 +10,7 @@ import webbrowser
 
 record = {}
 
-ser = serial.Serial("/dev/cu.usbmodem144301", baudrate=9600, timeout=1)
+ser = serial.Serial("/dev/cu.usbmodem143301", baudrate=9600, timeout=1)
 duck = talk.init()
 
 sample_rate = 48000
@@ -62,8 +62,8 @@ def duck_debugging():
     with sr.Microphone(device_index=mic_id, sample_rate=sample_rate,
                        chunk_size=chunk_size) as source:
 
-        r.adjust_for_ambient_noise(source, duration=5)
-        duck_talk("Don't worry, Agent Buck is here to safe the day. Please run through your code with Agent Buck")
+        r.adjust_for_ambient_noise(source, duration=1)
+        duck_talk("Don't worry, Agent Bucky is here to safe the day. Please run through your code with Agent Bucky")
 
         try:
             while 1:
@@ -74,15 +74,15 @@ def duck_debugging():
                 print(text)
                 speech = speech + text
 
-                duck_talk("Have you cracked the code? Reply: chocolate to continue or coffee to get help")
+                duck_talk("Have you cracked the code? Reply: no to continue or help to get assistance")
                 audio = r.listen(source)
                 reply = r.recognize_google(audio)
                 print(reply)
-                if 'chocolate' in reply:
+                if 'no' in reply:
                     print('continue')
                     continue
-                elif 'coffee' in reply:
-                    duck_talk("Don't worry! Agent Duck will redirect you external help, straight from your web "
+                elif 'help' in reply:
+                    duck_talk("Don't worry! Agent Bucky will redirect you external help, straight from your web "
                               "browser. "
                               "Before we proceed, log your details.")
                     desc = input("Give a short description: \n")
@@ -101,7 +101,7 @@ def duck_debugging():
                     break
 
                 else:
-                    duck_talk("Good job! Agent Buck is glad. Log your details before moving on.")
+                    duck_talk("Good job! Agent Bucky is glad. Log your details before moving on.")
                     desc = input("Give a short description: \n")
                     lang = input("Programming Language used: \n")
                     record[datetime.now().strftime('%Y-%m-%d %H:%M:%S')] = {
@@ -143,8 +143,8 @@ while 1:
         print(data)
 
         if 'blue on' in data:
-            ps('audio/BeeperEmergencyCall.mp3')
-            duck_talk('blue light on, agent buck thinks you need help')
+            ps('audio/BeeperEmergencyCall_amp.mp3')
+            duck_talk('blue light on, agent Bucky thinks you need help')
             duck_debugging()
 
         elif 'yellow on' in data:
@@ -153,7 +153,7 @@ while 1:
             duck_debugging()
 
     except KeyboardInterrupt:
-        duck_talk("Thank you for using Agent Buck Services. Have a pleasant day.")
+        duck_talk("Thank you for using Agent Bucky Services. Have a pleasant day.")
         save_json(record)
 
         exit()
