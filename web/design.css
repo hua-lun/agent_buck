@@ -55,7 +55,7 @@
 .bottomLeft {
   display: block;
   width: 100%;
-  height: 30%;
+  height: 50%;
 }
 
 pre {
@@ -73,12 +73,12 @@ pre {
 .bigh1 {
   margin: 4px;
   font-family: "Lucida Console", "Courier New", monospace;
-  font-size: 50px;
+  font-size: 40px;
 }
 
 .bigh12 {
   margin: 40px;
   font-family: "Lucida Console", "Courier New", monospace;
-  font-size: 25px;
+  font-size: 20px;
   word-wrap: break-word;
 }
